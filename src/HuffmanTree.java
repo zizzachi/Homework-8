@@ -8,11 +8,8 @@ import java.util.PriorityQueue;
 
 public class HuffmanTree {
 
-	/**
-	 * Node Class
-	 * 
+	/** Node Class
 	 * @author chiarazizza
-	 *
 	 */
 	private class Node {
 		private Integer frequency;
@@ -20,17 +17,11 @@ public class HuffmanTree {
 		private Node left;
 		private Node right;
 
-		/**
-		 * Constructor for leaf Nodes
-		 * 
-		 * @param s
-		 *            a short representing the character
-		 * @param f
-		 *            an Integer representing the frequency of the character
-		 * @param l
-		 *            the left Node
-		 * @param r
-		 *            the right Node
+		/** Constructor for leaf Nodes 
+		 * @param s a short representing the character
+		 * @param f an Integer representing the frequency of the character
+		 * @param l the left Node
+		 * @param r the right Node
 		 */
 		public Node(short s, Integer f, Node l, Node r) {
 			this.character = s;
@@ -39,16 +30,10 @@ public class HuffmanTree {
 			this.right = r;
 		}
 
-		/**
-		 * Constructor for interior Nodes
-		 * 
-		 * @param f
-		 *            f an Integer representing the sum of the subtree
-		 *            frequencies
-		 * @param l
-		 *            the left Node
-		 * @param r
-		 *            the right Node
+		/** Constructor for interior Nodes
+		 * @param f f an Integer representing the sum of the subtree frequencies
+		 * @param l the left Node
+		 * @param r the right Node
 		 */
 		public Node(Integer f, Node l, Node r) {
 			this.frequency = f;
@@ -56,16 +41,13 @@ public class HuffmanTree {
 			this.right = r;
 		}
 
-		/**
-		 * Constructor for initializing root
+		/** Constructor for initializing root
 		 */
 		public Node() {
 		}
 	}
 
-	/**
-	 * Explains how to compare two Nodes
-	 * 
+	/** Explains how to compare two Nodes
 	 * @author chiarazizza
 	 *
 	 */
@@ -85,11 +67,8 @@ public class HuffmanTree {
 	private Node root;
 	private String[] arr;
 
-	/**
-	 * Constructs a HuffmanTree from the given frequency map of 9-bit values
-	 * 
-	 * @param m
-	 *            a Map.
+	/** Constructs a HuffmanTree from the given frequency map of 9-bit values
+	 * @param m a Map.
 	 */
 	public HuffmanTree(Map<Short, Integer> m) {
 		this.root = new Node();
@@ -102,11 +81,8 @@ public class HuffmanTree {
 		buildTree(pq);
 	}
 
-	/**
-	 * Constructs a PriorityQueue from a Map
-	 * 
-	 * @param m
-	 *            a Map
+	/** Constructs a PriorityQueue from a Map
+	 * @param m a Map
 	 * @return pq a PriorityQueue
 	 */
 	private PriorityQueue<Node> buildQueue(Map<Short, Integer> m) {
@@ -129,11 +105,8 @@ public class HuffmanTree {
 		return pq;
 	}
 
-	/**
-	 * Constructs a HuffmanTree from a PriorityQueue
-	 * 
-	 * @param pq
-	 *            a PriorityQueue
+	/** Constructs a HuffmanTree from a PriorityQueue
+	 * @param pq a PriorityQueue
 	 */
 	private void buildTree(PriorityQueue<Node> pq) {
 		if (pq.isEmpty()) {
@@ -150,15 +123,11 @@ public class HuffmanTree {
 		}
 	}
 
-	/**
-	 * Encodes the file given as a stream of bits into a compressed format using
+	/** Encodes the file given as a stream of bits into a compressed format using
 	 * this Huffman tree. The encoded values are written, bit-by-bit to the
 	 * given BitOuputStream
-	 * 
-	 * @param in
-	 *            the BitInputStream being read
-	 * @param out
-	 *            the BitOutputStream being written to
+	 * @param in the BitInputStream being read
+	 * @param out the BitOutputStream being written to
 	 */
 	public void encode(BitInputStream in, BitOutputStream out) {
 		System.out.println("In encode.");
@@ -184,15 +153,11 @@ public class HuffmanTree {
 		}
 	}
 
-	/**
-	 * Decodes a stream of huffman codes from a file given as a stream of bits
+	/** Decodes a stream of huffman codes from a file given as a stream of bits
 	 * into their uncompressed form, saving the results to the given output
 	 * stream
-	 * 
-	 * @param in
-	 *            the BitInputStream being read
-	 * @param out
-	 *            the BitOutputStream being written to
+	 * @param in the BitInputStream being read
+	 * @param out the BitOutputStream being written to
 	 */
 	public void decode(BitInputStream in, BitOutputStream out) {
 
@@ -209,7 +174,7 @@ public class HuffmanTree {
 
 	public void printArr() {
 		for (int i = 0; i < this.arr.length; i++) { // CHECK THIS -- DOESN'T
-													// MATCH HOMEWORK CHART
+			// MATCH HOMEWORK CHART
 			if (this.arr[i] != null) {
 				System.out.println("Character value: " + i);
 				System.out.println("Character path:  " + this.arr[i] + "\n");
@@ -237,7 +202,7 @@ public class HuffmanTree {
 		BitOutputStream output = new BitOutputStream("TestOutput.txt", true);
 
 		System.out.println(input.readBits(8));
-		 t.encode(input, output);
+		t.encode(input, output);
 		// output.writeBit(1);
 
 		System.out.println(input.hasBits());
